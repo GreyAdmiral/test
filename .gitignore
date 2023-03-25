@@ -21,3 +21,6 @@ Thumbs.db
 
 # игнорировать файлы кэша
 .sass-cache
+
+# игнорировать файл пакетов Gulp
+package-lock.json
