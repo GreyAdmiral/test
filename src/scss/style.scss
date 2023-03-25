@@ -1,0 +1,10 @@
+@use "exports/forwards";
+@use "exports/extends";
+@use "sass:meta";
+
+* {
+	@extend %taphighlight;
+}
+
+// * Подключение шрифтов
+// @include meta.load-css("components/fonts");

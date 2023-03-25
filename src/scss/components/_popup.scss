@@ -1,0 +1,133 @@
+@use "../exports/functions" as f;
+@use "../exports/mixins" as mix;
+@use "../exports/extends";
+
+.modal-btn {
+	padding: f.rem(7);
+}
+
+.modal {
+	--transition-time: 0.3s;
+	position: fixed;
+	top: 0;
+	left: 0;
+	@extend %fullwhp;
+	@extend %centerflex;
+	background-color: rgba(0, 0, 0, 0.5);
+	text-align: center;
+	@include mix.opvis(0, hidden);
+	overflow: hidden;
+	transition: opacity var(--transition-time), visibility var(--transition-time);
+	z-index: 1000;
+
+	&.is-open {
+		@include mix.opvis(1, visible);
+		transition: opacity var(--transition-time), visibility var(--transition-time);
+	}
+
+	&__container {
+		position: relative;
+		@include mix.mawh(50%);
+		margin: 0 auto;
+		background-color: olivedrab;
+		border-radius: 20px;
+		cursor: default;
+		overflow-x: hidden;
+		text-align: left;
+		@include mix.adaptivfont(18, 14);
+		display: none;
+
+		@include mix.tablet {
+			width: 90%;
+		}
+
+		&.modal-open {
+			@include mix.colflexing(center, null);
+		}
+	}
+
+	&__header {
+		@include mix.flexing(space-between, null);
+	}
+
+	&__title {
+		padding: f.rem(7) f.rem(11);
+		border-radius: f.rem(7) f.rem(7) 0 0;
+		overflow: hidden;
+		align-self: center;
+		color: wheat;
+	}
+
+	&-close {
+		padding: f.rem(7);
+		cursor: pointer;
+		background-color: red;
+		text-transform: uppercase;
+		@include mix.adaptivfont(16, 12);
+	}
+
+	&-content {
+		height: 100%;
+		background: rgb(123, 202, 26);
+		padding: f.rem(7) f.rem(11);
+		border-radius: 0 0 f.rem(7) f.rem(7);
+		@include mix.ovxy(hidden, auto);
+	}
+
+	&-text {
+		color: wheat;
+	}
+}
+
+.fade {
+	opacity: 0;
+	transition: opacity var(--transition-time);
+
+	&.animate-open {
+		opacity: 1;
+		transition: opacity var(--transition-time);
+	}
+}
+
+.fadeInUp {
+	opacity: 0;
+	transform: translateY(-100px);
+	transition: opacity var(--transition-time), transform var(--transition-time);
+
+	&.animate-open {
+		opacity: 1;
+		transform: translateY(0);
+		transition: opacity var(--transition-time), transform var(--transition-time);
+	}
+}
+
+.fadeInDown {
+	opacity: 0;
+	transform: translateY(100px);
+	transition: opacity var(--transition-time), transform var(--transition-time);
+
+	&.animate-open {
+		opacity: 1;
+		transform: translateY(0);
+		transition: opacity var(--transition-time), transform var(--transition-time);
+	}
+}
+
+.disable-scroll {
+	position: fixed;
+	overflow: hidden;
+	width: 100%;
+	height: 100vh;
+	left: 0;
+	top: 0;
+}
+
+.modal-btn:focus {
+	outline: 3px red solid;
+}
+
+.modal {
+	& *:focus {
+		outline: 3px red solid;
+	}
+}

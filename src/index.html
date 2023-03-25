@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include("html/blocks/head.html", {
+title: "Тестовое задание",
+description: "Это тестовое задание"
+})
+
+<body>
+	<div class="wrapper">
+		<main class="main">
+			@@include("html/blocks/layout.html", {})
+		</main>
+	</div>
+	@@include("html/components/popups.html", {})
+	@@include("html/components/popupbutton.html", {target: "first", title: ""})
+	@@include("html/blocks/js.html", {filename: "script.min"})
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+@use "../functions/others" as f;
+@use "../vars/maket" as vars;
+@use "breakpoints" as b;
+
+// Подключение шрифта
+@mixin fontface($font-family, $url, $weight, $style) {
+	@font-face {
+		font-family: "#{$font-family}";
+		src: url("../fonts/#{$url}.woff2") format("woff2");
+		font-weight: #{$weight};
+		font-display: swap;
+		font-style: $style;
+	}
+}
+
+// Адаптивный шрифт
+@mixin adaptivfont($pc: vars.$deftextsize, $mob: vars.$defmobtextsize) {
+	$pcsize: f.parseInt($pc);
+	$mobsize: f.parseInt($mob);
+	$pcwidth: f.parseInt(vars.$layoutwidth);
+	$mobwidth: f.parseInt(vars.$layoutminwidth);
+	$adsize: $pcsize - $mobsize;
+	$admobsize: $adsize * 1.7;
+
+	@include b.smalltablet {
+		font-size: calc(#{$mobsize + px} + (#{$admobsize} * (100vw - #{$mobwidth + px}) / #{$pcwidth}));
+	}
+
+	@include b.oversmalltablet {
+		font-size: calc(#{$mobsize + px} + (#{$adsize} * (100vw / #{$pcwidth})));
+	}
+}

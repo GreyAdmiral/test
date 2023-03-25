@@ -1,0 +1,48 @@
+@use "../exports/functions" as f;
+@use "../exports/mixins" as mix;
+@use "../exports/vars" as vars;
+@use "sass:math";
+
+html {
+	@include mix.scrollbehavior();
+}
+
+.wrapper {
+	min-height: 100%;
+	@include mix.colflex;
+
+	// Фикс для слайдеров
+	> * {
+		min-width: 0;
+	}
+}
+
+@if (vars.$responsiveType) {
+	// Отзывчивая верстка без брейк-поинтов
+	.container,
+	[class*="__container"] {
+		@if (vars.$container>0) {
+			max-width: f.rem(vars.$container);
+			box-sizing: content-box;
+			margin: 0 auto;
+		}
+		@if (vars.$containerPadding>0) {
+			padding: 0 f.rem(math.div(vars.$containerPadding, 2));
+		}
+	}
+} @else {
+	// Верстка адаптива вручную по брейк-поинтам
+	.container,
+	[class*="__container"] {
+		margin: 0 auto;
+		@if (vars.$container>0) {
+			max-width: vars.$container;
+		}
+	}
+}
+
+// Блокировка прокрутки контента
+.lock {
+	overflow: hidden !important;
+	touch-action: none !important;
+}

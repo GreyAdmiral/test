@@ -1,0 +1,69 @@
+@use "../../exports/vars" as vars;
+@use "sass:map";
+
+// Флексы
+@mixin flexing($js: stretch, $ai: $js) {
+	display: flex;
+	justify-content: $js;
+	align-items: $ai;
+}
+
+@mixin iflexing($js: stretch, $ai: $js) {
+	display: inline-flex;
+	justify-content: $js;
+	align-items: $ai;
+}
+
+@mixin colflexing($js: stretch, $ai: $js) {
+	display: flex;
+	flex-direction: column;
+	justify-content: $js;
+	align-items: $ai;
+}
+
+@mixin icolflexing($js: stretch, $ai: $js) {
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: $js;
+	align-items: $ai;
+}
+
+@mixin colflex {
+	display: flex;
+	flex-direction: column;
+}
+
+// Адаптивная сетка на флексах
+@mixin flexlayout($options: vars.$cardsoptions) {
+	[data-#{map-get($options, parent)}] {
+		--gap: #{map.get($options, bigDesktopGap)};
+		--elems: #{map.get($options, bigDesktopElems)};
+
+		@include flexing(center);
+		flex-wrap: wrap;
+		gap: var(--gap);
+
+		@if (vars.$container>0) {
+			max-width: vars.$container;
+		}
+	}
+
+	[data-#{map-get($options, parent)}-#{map.get($options, child)}] {
+		width: calc((100% - ((var(--elems) - 1) * var(--gap))) / (var(--elems)));
+
+		@media (max-width: map-get($options, desktop)) {
+			--gap: #{map.get($options, desktopGap)};
+			--elems: #{map.get($options, desktopElems)};
+		}
+
+		@media (max-width: map-get($options, tablet)) {
+			--gap: #{map.get($options, tabletGap)};
+			--elems: #{map.get($options, tabletElems)};
+		}
+
+		@media (max-width: map-get($options, mobile)) {
+			--gap: #{map.get($options, mobileGap)};
+			--elems: #{map.get($options, mobileElems)};
+		}
+	}
+}

@@ -1,0 +1,16 @@
+// Импульсный скролл
+%smoothscroll {
+	-webkit-overflow-scrolling: touch;
+}
+
+// Стабильный скролл
+%stablescroll {
+	overscroll-behavior: none;
+}
+
+// Скрыть скролл
+%hidescroll {
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
