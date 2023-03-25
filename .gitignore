@@ -1,0 +1,23 @@
+# игнорировать файлы и каталоги сборки и зависимостей
+dist/
+build/
+node_modules/
+bower_components/
+
+# игнорировать файлы, созданные ОС
+ehthumbs.db
+Thumbs.db
+*.DS_Store
+
+# игнорировать файлы настроек редакторов
+/.idea/
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+
+# игнорировать файлы карт
+*.css.map
+*.js.map
+
+# игнорировать файлы кэша
+.sass-cache

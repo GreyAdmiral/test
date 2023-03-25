@@ -1,0 +1,111 @@
+@use "../exports/functions" as f;
+@use "../exports/mixins" as mix;
+@use "../exports/vars" as vars;
+@use "sass:meta";
+
+/* The remaining styles of the form */
+
+.feedback {
+	position: relative;
+	@include mix.colflex();
+	flex: 0 1 f.percent(527.8px, 665px);
+	padding: f.rem(39px) 0 f.rem(30px);
+	background-color: vars.$white;
+	font-family: PT Sans, "Arial", sans-serif;
+	row-gap: f.rem(14px);
+	overflow: hidden;
+	z-index: 1;
+
+	@include mix.smalltablet {
+		padding: f.em(15px);
+		overflow-y: auto;
+	}
+
+	> fieldset {
+		column-gap: 2.1%;
+		padding-bottom: f.rem(2px);
+		padding-left: f.rem(21px);
+
+		@include mix.smalltablet {
+			&:not(.usergender) {
+				flex-direction: column;
+				padding: f.em(10px);
+				row-gap: f.em(10px);
+
+				> label {
+					flex-direction: row;
+					align-items: center;
+					column-gap: f.rem(5px);
+					width: calc(90vw - 100px);
+
+					span {
+						flex: 0 1 35%;
+					}
+
+					input {
+						flex: 1 1 100%;
+					}
+
+					.choices {
+						flex: 1 1 100%;
+					}
+				}
+			}
+		}
+	}
+
+	&__info{
+		padding-left: f.rem(21px);
+		padding-top: f.rem(0.5px);
+	}
+
+	&__login {
+		padding-left: f.rem(20px);
+		padding-bottom: f.rem(5px);
+	}
+
+	&__title {
+		font-family: WorkSans, "Arial", sans-serif;
+		@include mix.adaptivfont(22px, 15px);
+		font-weight: 500;
+		line-height: 1.18;
+		letter-spacing: 0.001px;
+		word-spacing: 0.001px;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+
+		@include mix.smalltablet {
+			padding-top: f.rem(4.5px);
+			padding-bottom: f.rem(4.5px);
+		}
+	}
+
+	&__text {
+		font-family: WorkSans, "Arial", sans-serif;
+		@include mix.adaptivfont(14px, 9px);
+		font-weight: 300;
+		line-height: 1.14;
+		letter-spacing: 0.02px;
+		word-spacing: 0.02px;
+		padding-bottom: f.rem(7px);
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		overflow: hidden;
+
+		@include mix.smalltablet {
+			padding-top: f.rem(3.5px);
+			padding-bottom: f.rem(3.5px);
+		}
+	}
+
+	&__button {
+		margin-right: f.rem(1px);
+		margin-bottom: f.rem(-3px);
+	}
+
+	@include meta.load-css("login");
+}
+
+@include meta.load-css("fadeanimation");

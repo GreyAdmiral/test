@@ -1,0 +1,79 @@
+// Цвета фона и текста
+@mixin colors($tc: black, $bgc: white) {
+	color: $tc;
+	background-color: $bgc;
+}
+
+// Видимость
+@mixin opvis($op: 1, $vis: visible) {
+	opacity: $op;
+	visibility: $vis;
+}
+
+// Обрезка по краю
+@mixin ovxy($ox: auto, $oy: $ox) {
+	overflow-x: $ox;
+	overflow-y: $oy;
+}
+
+// Стили фокусировки
+@mixin focused {
+	@supports not selector(:focus-visible) {
+		&:focus {
+			@content;
+		}
+	}
+
+	@supports selector(:focus-visible) {
+		&:focus-visible {
+			@content;
+		}
+	}
+}
+
+// Стили наведения
+@mixin hover {
+	@media (any-hover: hover) {
+		&:hover {
+			@content;
+		}
+	}
+}
+
+// mobile viewport bug fix
+@mixin available($property) {
+	#{$property}: -moz-available;
+	#{$property}: -webkit-fill-available;
+	#{$property}: fill-available;
+}
+
+// Простое адаптивное свойство
+@mixin adaptivProperty($property, $pc: vars.$deftextsize, $mob: vars.$defmobtextsize) {
+	$pcsize: f.parseInt($pc);
+	$mobsize: f.parseInt($mob);
+	$pcwidth: f.parseInt(vars.$layoutwidth);
+	$mobwidth: f.parseInt(vars.$layoutminwidth);
+	$adsize: $pcsize - $mobsize;
+	$admobsize: $adsize * 1.7;
+
+	@include smalltablet {
+		#{$property}: calc(#{$mobsize + px} + (#{$admobsize} * (100vw - #{$mobwidth + px}) / #{$pcwidth}));
+	}
+
+	@include oversmalltablet {
+		#{$property}: calc(#{$mobsize + px} + (#{$adsize} * (100vw / #{$pcwidth})));
+	}
+}
+
+// Стили для IE9+
+@mixin iestyles {
+	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active), (min-width: 0\0) {
+		@content;
+	}
+}
+
+// Плавный скролл
+@mixin scrollbehavior($scr: smooth, $ovscr: null) {
+	scroll-behavior: $scr;
+	overscroll-behavior: $ovscr;
+}

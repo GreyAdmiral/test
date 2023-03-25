@@ -1,0 +1,36 @@
+@use "../exports/functions" as f;
+@use "../exports/mixins" as mix;
+@use "../exports/vars" as vars;
+
+/* Logo */
+
+.logo {
+	max-width: f.percent(411px, 527px);
+	max-height: f.percent(411px, 480px);
+	color: vars.$bgimagecolor;
+	position: absolute;
+	right: -50%;
+	bottom: -50%;
+	transform: translate(-41%, -44%);
+	z-index: -1;
+	fill-opacity: 0;
+	stroke-dasharray: 725;
+	stroke-dashoffset: 725;
+	animation: stroke 2.25s linear 0s forwards, fill 1s linear 2.25s forwards;
+
+	@include mix.smalltablet {
+		display: none;
+	}
+}
+
+@keyframes stroke {
+	100% {
+		stroke-dasharray: 0;
+	}
+}
+
+@keyframes fill {
+	100% {
+		fill-opacity: 1;
+	}
+}

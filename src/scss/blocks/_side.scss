@@ -1,0 +1,32 @@
+@use "../exports/functions" as f;
+@use "../exports/mixins" as mix;
+@use "../exports/vars" as vars;
+@use "../exports/extends";
+
+/* The lateral name */
+
+.side {
+	position: relative;
+	flex: 0 1 f.percent(137.2px, 665px);
+	padding: f.rem(22px) f.rem(12px);
+	font-family: PT Sans, "Arial", sans-serif;
+	@include mix.adaptivfont(49px, 45px);
+	background-color: vars.$violet;
+	color: vars.$white;
+	z-index: 1;
+
+	& h1 {
+		display: inline-block;
+		@extend %fullwhp;
+		font-family: PT Sans, "Arial", sans-serif;
+		writing-mode: vertical-lr;
+		transform: rotate(180deg);
+		word-spacing: f.rem(3px);
+
+		@include mix.smalltablet {
+			writing-mode: horizontal-tb;
+			transform: rotate(0deg);
+			text-align: center;
+		}
+	}
+}

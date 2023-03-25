@@ -1,0 +1,24 @@
+<form action="#" class="feedback">
+	<div class="feedback__info">
+		<h2 class="feedback__title fade-animation">New user?</h2>
+		<div class="feedback__text fade-animation">Use the form below to create your account.</div>
+	</div>
+
+	@@include("username.html", {})
+
+	@@include("userinfo.html", {})
+
+	@@include("userrequisites.html", {})
+
+	@@include("userpassword.html", {})
+
+	<div class="feedback__login">
+		@@include("havelogin.html", {})
+
+		<button class="submit feedback__button fade-animation">
+			<span>Complete Signup</span>
+		</button>
+	</div>
+
+	@@include("logo.html", {})
+</form>

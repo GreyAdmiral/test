@@ -1,0 +1,28 @@
+// Счетчик для списка
+%listCounter {
+	list-style-type: none;
+	counter-reset: item;
+
+	li {
+		position: relative;
+		&:before {
+			counter-increment: item;
+			content: counter(item);
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+}
+
+// Зеркальное отображение
+%mirror {
+	transform: scale(-1, 1);
+}
+
+// Для fade-эффекта
+%forfade {
+	position: relative;
+	top: 0;
+	opacity: 1;
+}

@@ -1,0 +1,31 @@
+@use "../exports/extends";
+@use "sass:list";
+
+/* Fade animation */
+
+$fade-elements: (
+	feedback__title,
+	feedback__text,
+	username__first,
+	username__last,
+	userinfo__nationality,
+	userinfo__email,
+	birth,
+	usergender,
+	userpassword__first,
+	userpassword__last,
+	havelogin,
+	submit
+);
+
+@each $el in $fade-elements {
+	.#{$el} {
+		@extend %forfade;
+		transition: top 0.3s ease #{list.index($fade-elements, $el) * 0.3}s, opacity 0.2s ease #{list.index($fade-elements, $el) * 0.3}s, transform 255ms ease-out 0s;
+	}
+}
+
+.fade-animation {
+	top: 8px;
+	opacity: 0;
+}

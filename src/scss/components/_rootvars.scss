@@ -1,0 +1,8 @@
+@use '../exports/functions' as f;
+
+/* CSS variables */
+
+:root {
+	#{--checkboxsize}: f.em(14px);
+	#{--checksize}: f.em(6px);
+}
