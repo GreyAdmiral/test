@@ -2,9 +2,7 @@ export const $vars = {
 	html: document.documentElement,
 	body: document.body,
 	wrapper: document.getElementsByClassName("wrapper")[0],
-	header: document.getElementsByTagName("header")[0],
 	main: document.getElementsByTagName("main")[0],
-	footer: document.getElementsByTagName("footer")[0],
 	documentWidth: Math.max(
 		document.body.scrollWidth,
 		document.documentElement.scrollWidth,
