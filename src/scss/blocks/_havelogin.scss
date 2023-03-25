@@ -1,0 +1,27 @@
+@use "../exports/mixins" as mix;
+@use "../exports/functions" as f;
+
+/* Block with a link */
+
+.havelogin {
+	font-family: PT Sans, "Arial", sans-serif;
+	@include mix.adaptivfont(14px, 10px);
+	font-weight: 300;
+	line-height: 1.5;
+	letter-spacing: 0.25px;
+	padding-bottom: f.rem(5px);
+	overflow: hidden;
+
+	a {
+		font-family: WorkSans, "Arial", sans-serif;
+		@include mix.adaptivfont(12px, 8px);
+		font-weight: 500;
+		line-height: 1.07;
+		letter-spacing: 1px;
+		padding-bottom: 1px;
+	}
+	
+	@media all and (max-width: 360px) {
+		order: 2;
+	}
+}

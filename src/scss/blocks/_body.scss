@@ -10,6 +10,8 @@ html {
 .wrapper {
 	min-height: 100%;
 	@include mix.colflex;
+	background-color: vars.$wrpbg;
+	font-family: WorkSans, "Arial", sans-serif;
 
 	// Фикс для слайдеров
 	> * {

@@ -1,0 +1,13 @@
+@use '../developers/mixins/others' as sm;
+
+/* Popap opening button */
+
+.modal-btn {
+	width: 0;
+	height: 0;
+	top: -100%;
+	left: -100%;
+	display: none;
+	position: fixed;
+	@include sm.opvis(0, hidden);
+}

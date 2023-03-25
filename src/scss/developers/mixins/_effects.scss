@@ -5,7 +5,7 @@
 // Анимирование кнопки
 @mixin animatebtn($smax: 1.05, $smin: 0.95) {
 	transform-origin: center center;
-	transition: all ease-out 255ms;
+	// transition: all ease-out 255ms;
 
 	&:hover {
 		transform: scale($smax);

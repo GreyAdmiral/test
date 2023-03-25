@@ -1,3 +1,9 @@
+@use "sass:meta";
+
 .main {
 	flex: 1 1 auto;
 }
+
+@include meta.load-css("layout");
+@include meta.load-css("havelogin");
+@include meta.load-css("../components/popup");

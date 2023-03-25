@@ -1,0 +1,82 @@
+@use "../exports/functions" as f;
+@use "../exports/mixins" as mix;
+@use "../exports/vars" as vars;
+@use "sass:math";
+
+/* Gender block */
+
+.usergender {
+	padding-top: f.rem(6.6px);
+	padding-bottom: f.rem(3px);
+	column-gap: 10%;
+
+	@include mix.smalltablet {
+		width: calc(90vw - 100px);
+		column-gap: 2.1%;
+
+		& > &__title {
+			flex: 0 1 25.5%;
+		}
+	}
+
+	[type="radio"] {
+		display: none;
+	}
+
+	&__title {
+		margin-left: f.rem(-1px);
+		font-family: WorkSans, "Arial", sans-serif;
+		@include mix.adaptivfont();
+		font-weight: 400;
+
+		&:not([class$="__title--reset"]) {
+			margin-top: f.rem(-4px);
+			padding-bottom: f.rem(4px);
+			padding-left: f.rem(1px);
+		}
+
+		@include mix.smalltablet {
+			margin-left: 0;
+		}
+	}
+
+	> label {
+		flex-direction: row;
+		align-items: center;
+		padding-bottom: f.rem(4px);
+		padding-top: f.rem(4px);
+		flex: 0 1 calc(37% - 2.1%);
+	}
+
+	[type="radio"] {
+		& + span {
+			position: relative;
+			padding-left: f.em(18px);
+			padding-bottom: 0;
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: var(--checkboxsize);
+				height: var(--checkboxsize);
+				border: 1px solid vars.$violet;
+				border-radius: 50%;
+			}
+		}
+
+		&:checked + span {
+			&::after {
+				content: "";
+				position: absolute;
+				width: var(--checksize);
+				height: var(--checksize);
+				top: calc(var(--checkboxsize) / 2 - var(--checksize) / 2);
+				left: calc(var(--checkboxsize) / 2 - var(--checksize) / 2);
+				background-color: vars.$violet;
+				border-radius: 50%;
+			}
+		}
+	}
+}

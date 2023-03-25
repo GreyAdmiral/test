@@ -1,0 +1,41 @@
+@use "../exports/functions" as f;
+@use "../exports/mixins" as mix;
+@use "../exports/vars" as vars;
+
+/* Date of Birth */
+
+.birth {
+	flex: 0 1 47%;
+	align-items: center;
+	column-gap: 2.1%;
+
+	&__title {
+		margin-top: f.rem(-2px);
+	}
+
+	@include mix.smalltablet {
+		width: calc(90vw - 100px);
+	}
+
+	&__title:first-of-type {
+		width: 100%;
+	}
+
+	.choices {
+		position: relative;
+		padding-bottom: f.rem(2px);
+		border-bottom: 1px solid vars.$emphasizing;
+
+		&:nth-of-type(1) {
+			flex: 0 1 calc(27.333% - 2.1%);
+		}
+
+		&:nth-of-type(2) {
+			flex: 0 1 calc(42.333% - 2.1%);
+		}
+
+		&:nth-of-type(3) {
+			flex: 0 1 calc(29.5% + 1px);
+		}
+	}
+}

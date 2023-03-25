@@ -1,0 +1,21 @@
+@use "../exports/functions" as f;
+@use "../exports/mixins" as mix;
+@use "sass:meta";
+
+/* The field of the layout */
+
+.layout {
+	max-width: f.rem(800px);
+	max-height: f.rem(600px);
+	display: flex;
+	padding: f.rem(60.48px) f.rem(68px) f.rem(59.52px);
+	margin: 0 auto;
+
+	@include mix.smalltablet {
+		flex-direction: column;
+		padding: f.rem(30px);
+	}
+}
+
+@include meta.load-css("form");
+@include meta.load-css("side");

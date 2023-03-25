@@ -1,0 +1,22 @@
+@use "../exports/functions" as f;
+@use "../exports/mixins" as mix;
+@use "sass:meta";
+
+/* Lower block */
+
+.feedback {
+	&__login {
+		@include mix.flexing(space-between, flex-end);
+		flex: 1 1 auto;
+		padding-right: f.rem(20px);
+
+		@media all and (max-width: 360px) {
+			flex-direction: column;
+			align-items: center;
+
+			row-gap: f.rem(12px);
+		}
+	}
+}
+
+@include meta.load-css("submit");
